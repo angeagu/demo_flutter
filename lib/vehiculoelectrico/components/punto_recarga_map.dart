@@ -10,7 +10,6 @@ class PuntoRecargaMap extends StatelessWidget {
 
   PuntoRecargaMap({this.latitud,this.longitud}) {
 
-    //var provider = new StaticMapProvider('AIzaSyCuYxn-zdKPT1_buuT3Tp7y-kgga9c97_8');
 //    MapView mapView = new MapView();
 //    mapView.setCameraPosition(new CameraPosition(
 //        new Location(45.526607443935724, -122.66731660813093), 15.0));
@@ -24,7 +23,6 @@ class PuntoRecargaMap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-//    var provider = new StaticMapProvider('AIzaSyCuYxn-zdKPT1_buuT3Tp7y-kgga9c97_8');
 //    MapView mapView = new MapView();
 //    mapView.setCameraPosition(new CameraPosition(
 //        new Location(45.526607443935724, -122.66731660813093), 15.0));
