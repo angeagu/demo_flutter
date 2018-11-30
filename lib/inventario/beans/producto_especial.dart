@@ -1,4 +1,4 @@
-import 'package:demo_flutter/beans/producto.dart';
+import 'package:demo_flutter/inventario/beans/producto.dart';
 
 class ProductoEspecial extends Producto {
   double iva;

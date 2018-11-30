@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:demo_flutter/views/gestion.dart';
-import 'package:demo_flutter/views/product_list_view.dart';
-import 'package:demo_flutter/views/add_view.dart';
+import 'package:demo_flutter/inventario/views/gestion.dart';
+import 'package:demo_flutter/inventario/views/product_list_view.dart';
+import 'package:demo_flutter/inventario/views/add_view.dart';
 
 class MainView extends StatelessWidget {
   @override

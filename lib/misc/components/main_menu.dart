@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:demo_flutter/views/add_view.dart';
-import 'package:demo_flutter/views/gestion_alumnos.dart';
-import 'package:demo_flutter/views/gestion.dart';
-import 'package:demo_flutter/views/export.dart';
-import 'package:demo_flutter/views/product_list_view.dart';
+import 'package:demo_flutter/inventario/views/add_view.dart';
+import 'package:demo_flutter/misc/views/gestion_alumnos.dart';
+import 'package:demo_flutter/inventario/views/gestion.dart';
+import 'package:demo_flutter/misc/views/export.dart';
+import 'package:demo_flutter/inventario/views/product_list_view.dart';
 
 class MainMenu extends StatefulWidget {
 

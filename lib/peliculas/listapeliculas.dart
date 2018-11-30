@@ -14,7 +14,7 @@ class ListaPeliculas extends StatelessWidget {
     this.listaPeliculas = busqueda.peliculas;
 
     this.listaPeliculas.forEach((pelicula) {
-      debugPrint("Pilicula: " + pelicula.title);
+      debugPrint("Pelicula: " + pelicula.title);
     });
   }
   
@@ -40,10 +40,13 @@ class ListaPeliculas extends StatelessWidget {
       body: Center(
         child: Column(
           children: <Widget>[
-            new ListView(
-              shrinkWrap: true,
-              padding: const EdgeInsets.all(20.0),
-              children: getListItems(),
+            Expanded(
+              child:
+                new ListView(
+                shrinkWrap: true,
+                  padding: const EdgeInsets.all(20.0),
+                  children: getListItems(),
+                )
             ),
             RaisedButton(
               onPressed: () {
@@ -51,8 +54,8 @@ class ListaPeliculas extends StatelessWidget {
               },
               child: Text("Volver"),
             ),
-          ],
-        )
+          ]
+        ),
       ),
     );
   }

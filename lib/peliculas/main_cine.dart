@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:http/http.dart' as http;
-import 'package:demo_flutter/listapeliculas.dart';
+import 'package:demo_flutter/peliculas/listapeliculas.dart';
 
 void main() => runApp(MyApp());
 

@@ -1,5 +1,5 @@
-import 'package:demo_flutter/beans/producto.dart';
-import 'package:demo_flutter/beans/producto_especial.dart';
+import 'package:demo_flutter/inventario/beans/producto.dart';
+import 'package:demo_flutter/inventario/beans/producto_especial.dart';
 import 'dart:math';
 
 class Inventario {

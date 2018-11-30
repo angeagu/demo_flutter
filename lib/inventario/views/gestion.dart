@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:demo_flutter/beans/producto.dart';
-import 'package:demo_flutter/beans/inventario.dart';
+import 'package:demo_flutter/inventario/beans/producto.dart';
+import 'package:demo_flutter/inventario/beans/inventario.dart';
 
 class ImportView extends StatelessWidget {
 

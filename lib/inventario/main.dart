@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:demo_flutter/components/main_menu.dart';
-import 'package:demo_flutter/views/main_view.dart';
+import 'package:demo_flutter/inventario/views/main_view.dart';
 
 void main() => runApp(new MyApp());
 
@@ -15,7 +14,6 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
       ),
       home: Scaffold(
-        drawer: new MainMenu(),
         appBar: AppBar(
           leading: IconButton(
             icon: Icon(Icons.menu),
