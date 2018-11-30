@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-//import 'package:map_view/static_map_provider.dart';
-//import 'package:map_view/map_view.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong/latlong.dart';
 
 class PuntoRecargaMap extends StatelessWidget {
 
@@ -9,39 +9,34 @@ class PuntoRecargaMap extends StatelessWidget {
   Uri uri;
 
   PuntoRecargaMap({this.latitud,this.longitud}) {
-
-//    MapView mapView = new MapView();
-//    mapView.setCameraPosition(new CameraPosition(
-//        new Location(45.526607443935724, -122.66731660813093), 15.0));
-//    var uri = provider.getImageUriFromMap(mapView,
-//        width: 900, height: 400);
     debugPrint('lat ' + latitud.toString() + ' long: ' + longitud.toString());
-//    uri = provider.getStaticUri(new Location(latitud, longitud), 12,
-//        width: 400, height: 400, mapType: StaticMapViewType.roadmap);
   }
 
   @override
   Widget build(BuildContext context) {
-
-//    MapView mapView = new MapView();
-//    mapView.setCameraPosition(new CameraPosition(
-//        new Location(45.526607443935724, -122.66731660813093), 15.0));
-//    var uri = provider.getImageUriFromMap(mapView,
-//        width: 900, height: 400);
-//    debugPrint('lat ' + latitud.toString() + ' long: ' + longitud.toString());
-//    var uri = provider.getStaticUri(new Location(this.latitud, this.longitud), 12,
-//        width: 900, height: 400, mapType: StaticMapViewType.roadmap);
 
     return new Container(
         height: 500.0,
         width: 400.0,
         child: Column(
           children: <Widget>[
-            Center(
-              child: Text('Punto de Recarga X')
+            new Padding(
+              padding: new EdgeInsets.only(top: 8.0, bottom: 8.0),
+              child: new Text("Punto de Recarga X"),
             ),
-            Center(
-              child: new Image.network(uri.toString())
+            Flexible(
+              child: new FlutterMap(
+                      options: new MapOptions(
+                        center: new LatLng(latitud, longitud),
+                        zoom: 18.0,
+                      ),
+                      layers: [
+                        new TileLayerOptions(
+                            urlTemplate:
+                            "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                            subdomains: ['a', 'b', 'c'])
+                      ]
+                  )
             )
           ],
         )
