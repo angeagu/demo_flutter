@@ -7,24 +7,24 @@ import 'package:demo_flutter/vehiculoelectrico/views/detalle_punto.dart';
 
 class ListaPuntos extends StatefulWidget {
 
-  String provincia;
+  String codigoPostal;
 
   @override
-  State createState() => new ListaDinamica(provincia: provincia);
+  State createState() => new ListaDinamica(codigoPostal: codigoPostal);
 
-  ListaPuntos({@required provincia}) {
-    this.provincia = provincia;
+  ListaPuntos({@required codigoPostal}) {
+    this.codigoPostal = codigoPostal;
   }
 
 }
 
 class ListaDinamica extends State<ListaPuntos> {
 
-  String provincia;
+  String codigoPostal;
   List<PuntoRecarga> listaPuntosRecarga;
 
-  ListaDinamica({@required provincia}) {
-    this.provincia = provincia;
+  ListaDinamica({@required codigoPostal}) {
+    this.codigoPostal = codigoPostal;
     this.listaPuntosRecarga = <PuntoRecarga>[];
     this.getPuntos();
   }
@@ -33,14 +33,17 @@ class ListaDinamica extends State<ListaPuntos> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Puntos de Recarga en " + provincia),
+        title: Text("Puntos de Recarga en " + this.codigoPostal),
       ),
       body: Center(
         child: Column(
             children: <Widget>[
               Expanded(
-                  child: new ListView.builder
+                  child: new ListView.separated
                     (
+                      separatorBuilder: (context, index) => Divider(
+                        color: Colors.black,
+                      ),
                       itemCount: listaPuntosRecarga.length,
                       itemBuilder: (BuildContext ctxt, int index) {
                         var puntoRecarga = listaPuntosRecarga[index] as PuntoRecarga;
@@ -48,9 +51,10 @@ class ListaDinamica extends State<ListaPuntos> {
 //                            + ' - ' + puntoRecarga.posicion.toString());
                         return new ListTile(
                             title: puntoRecarga.identificador != null ? Text(
-                                puntoRecarga.identificador) : Text(''),
+                                puntoRecarga.identificador, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blueGrey)) : Text(''),
                             subtitle: puntoRecarga.descripcion != null ? Text(
                                 puntoRecarga.descripcion) : Text(''),
+                            trailing: const Icon(Icons.keyboard_arrow_right, color: Colors.lightBlue,),
                             onTap: () {
                               Navigator.push(context, MaterialPageRoute(
                                   builder: (context) =>
@@ -82,20 +86,24 @@ class ListaDinamica extends State<ListaPuntos> {
         PuntoRecarga puntoRecarga = new PuntoRecarga();
         var element = item['element'];
         var atributos = element['attribute'] as List;
-        atributos.forEach((atributo) {
-          if (atributo['name'] == 'Posicion' && atributo['string'] != null) {
-            puntoRecarga.posicion = atributo['string'];
-          }
-          if (atributo['name'] == 'DatosPersonales' &&
-              atributo['string'] != null) {
-            puntoRecarga.identificador = atributo['string'];
-          }
-          if (atributo['name'] == 'NombreOrganismo' &&
-              atributo['string'] != null) {
-            puntoRecarga.descripcion = atributo['string'];
-          }
-        });
-        listaPuntosRecarga.add(puntoRecarga);
+        var codigoPostalElement = atributos.where((atributo) => atributo['name'] == 'CodigoPostal' && atributo['string'] != null).toList()[0];
+        var codigoPostalString = codigoPostalElement['string'];
+        if (codigoPostalString.startsWith(this.codigoPostal)) {
+          atributos.forEach((atributo) {
+            if (atributo['name'] == 'Posicion' && atributo['string'] != null) {
+              puntoRecarga.posicion = atributo['string'];
+            }
+            if (atributo['name'] == 'DatosPersonales' &&
+                atributo['string'] != null) {
+              puntoRecarga.identificador = atributo['string'];
+            }
+            if (atributo['name'] == 'NombreOrganismo' &&
+                atributo['string'] != null) {
+              puntoRecarga.descripcion = atributo['string'];
+            }
+          });
+          listaPuntosRecarga.add(puntoRecarga);
+        }
       });
       setState(() {});
     });
