@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:demo_flutter/widgets/container/container-row-column.dart';
-import 'package:demo_flutter/peliculas/listapeliculas.dart';
+import 'package:demo_flutter/widgets/tab-bar/tab-bar.dart';
+import 'package:demo_flutter/widgets/bottom-navigation-bar/bottom-navigation-bar.dart';
+import 'package:demo_flutter/widgets/drawer/drawer.dart';
+import 'package:demo_flutter/widgets/forms/forms.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -8,7 +12,7 @@ void main() => runApp(MyApp());
 class ViewRef {
   String title;
   String subtitle;
-  StatelessWidget view;
+  Widget view;
 
   ViewRef(this.title, this.subtitle, this.view);
 }
@@ -31,6 +35,11 @@ class HomeScreen extends StatelessWidget {
   static List<ViewRef> getWidgetList() {
     List<ViewRef> lista = [];
     lista.add(new ViewRef("Container/Row/Column", "Widgets de layout simples", new ContainerRowColumn()));
+    lista.add(new ViewRef("Tab Bar / Tab View", "Barra de pestañas con diferentes vistas", new TabBarExample()));
+    lista.add(new ViewRef("BottomNavigationBar", "Menu de navigacion en la parte baja de la aplicacion", new BottomNavigationBarExample()));
+    lista.add(new ViewRef("Drawer", "Menu lateral de tipo slide-in", new DrawerExample()));
+    lista.add(new ViewRef("Elementos de Formulario", "Elementos de seleccion e introduccion en formularios, y botones", new Forms()));
+
     return lista;
   }
 
@@ -57,7 +66,7 @@ class HomeScreen extends StatelessWidget {
                               subtitle: widgetRef.subtitle != null ? Text(widgetRef.subtitle) : Text(''),
                               trailing: const Icon(Icons.keyboard_arrow_right, color: Colors.lightGreen,),
                               onTap: () {
-                                StatelessWidget widget = widgetRef.view;
+                                Widget widget = widgetRef.view;
                                 Navigator.push(context, MaterialPageRoute(
                                     builder: (context) => widget));
                               }
