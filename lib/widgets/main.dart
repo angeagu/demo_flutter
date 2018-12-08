@@ -4,7 +4,8 @@ import 'package:demo_flutter/widgets/tab-bar/tab-bar.dart';
 import 'package:demo_flutter/widgets/bottom-navigation-bar/bottom-navigation-bar.dart';
 import 'package:demo_flutter/widgets/drawer/drawer.dart';
 import 'package:demo_flutter/widgets/forms/forms.dart';
-
+import 'package:demo_flutter/widgets/dialogs-alerts/dialogs-alerts.dart';
+import 'package:demo_flutter/widgets/list/list.dart';
 
 void main() => runApp(MyApp());
 
@@ -39,6 +40,8 @@ class HomeScreen extends StatelessWidget {
     lista.add(new ViewRef("BottomNavigationBar", "Menu de navigacion en la parte baja de la aplicacion", new BottomNavigationBarExample()));
     lista.add(new ViewRef("Drawer", "Menu lateral de tipo slide-in", new DrawerExample()));
     lista.add(new ViewRef("Elementos de Formulario", "Elementos de seleccion e introduccion en formularios, y botones", new Forms()));
+    //lista.add(new ViewRef("Dialogos y Alertas", "Elementos de notificacion al usuario, dialogos, confirmacion,etc", new DialogsAlerts()));
+    lista.add(new ViewRef("Listas", "Tipico widget de elementos ordenados en forma de lista", new ListExample()));
 
     return lista;
   }
